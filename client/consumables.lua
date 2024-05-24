@@ -376,14 +376,13 @@ RegisterNetEvent('consumables:client:UseJoint', function()
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items['joint'], 'remove')
+        TriggerEvent('qb-inventory:client:ItemBox', QBCore.Shared.Items['joint'], 'remove')
         if IsPedInAnyVehicle(PlayerPedId(), false) then
             QBCore.Functions.PlayAnim('timetable@gardener@smoking_joint', 'smoke_idle', false)
-        else
-            QBCore.Functions.PlayAnim('timetable@gardener@smoking_joint', 'smoke_idle', false)
         end
-        TriggerEvent('evidence:client:SetStatus', 'weedsmell', 300)
+        QBCore.Functions.PlayAnim('timetable@gardener@smoking_joint', 'smoke_idle', false)
         TriggerServerEvent('hud:server:RelieveStress', Config.RelieveWeedStress)
+        TriggerEvent('evidence:client:SetStatus', 'weedsmell', 300)
     end)
 end)
 
